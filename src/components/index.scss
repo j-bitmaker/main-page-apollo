@@ -1,0 +1,149 @@
+
+$active: #007bff;
+$inactive: #a4a5a6;
+$active-bottom: 2px solid $active;
+$inactive-bottom: 2px solid $inactive;
+$max: 70em;
+
+.section{
+        >div{
+            max-width: $max;
+        }
+        .list{
+            margin: auto;
+        }
+        .news{
+            display: flex;
+            flex-wrap: wrap;
+            .link{
+                display: flex;
+                flex-basis: 12em;
+                flex-grow: 3;
+                    >div{
+                        margin: 10px;
+                        img{
+                        max-width: 100%;
+                        border-radius: 8px;
+                        };
+                    };
+            };
+        }   
+        .news-item:hover{
+            border-radius: 8px;
+            box-shadow: 1px 1px 1px 1px grey;
+        }  
+}
+footer, .news{
+    background-color: transparent!important;
+    }
+.all{
+    margin: auto;
+    text-align: center;
+    color: $active;
+}
+.all:hover{
+    color: aqua;
+}
+
+
+.news-list>span:hover{
+    color: blue;
+}
+
+.carousel-item img{
+    max-height: 30em;
+}
+header {
+    height: 3em;
+    position: sticky;
+    top: 0;
+    border: 1px solid grey;
+    z-index: 1020;
+    box-shadow: 10px 10px 10px grey;
+    nav{
+        background-color: '#e3f2fd';
+        img{
+            width: 5em;
+        };
+        .nav-center{
+            width: 100%;
+            text-align: center;
+            > li {
+            float: none;
+            display: inline-block;
+            }
+        }
+    }
+}
+
+.topnav {
+    display: flex;
+    overflow: hidden;
+    a {
+        float: left;
+        display: block;
+        color: $inactive;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: $inactive-bottom;
+        }
+    :hover {
+        color: $active;
+    }
+    a.active {
+        border-bottom: $active-bottom;
+        color: $active;
+    }    
+    .empty{
+        display: flex;
+        flex-grow: 1
+        }
+}
+
+
+footer{
+    .logos{
+        display: flex;
+        justify-content: space-between;
+        .my-logo img{
+            width: 7em;
+        }
+        .soc-logos{
+            display: flex;
+            justify-content: end;
+            img{
+                width: 2em;
+                margin: 2px;
+            }
+        
+        }
+    }
+    .links{
+        display: flex;
+        flex-flow: row wrap;
+        div{
+            display: flex;
+            flex-flow: column wrap;
+        };
+        .first-column{
+            flex-basis: 30em;
+        };
+        .second-column{
+            flex-basis: 20em
+        }
+    }
+    span{
+        color: #808080
+    };
+    img{
+        display: flex;
+        flex-basis: 10px;
+    }
+}
+a:hover{
+    text-decoration: none;
+}
+
+
