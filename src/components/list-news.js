@@ -2,66 +2,83 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {useQuery} from "@apollo/react-hooks";
 import {gql} from 'apollo-boost';
+import Loader from './loader';
 import './index.scss'
 
-const data = gql`{
-    jobs{
-    id
-    title
-    slug
-    commitment{
-          id
-    title
+const news = gql`{
+    launchesPast(limit: 20) {
+      ships {
+        id
+        name
+        home_port
+        image
+        type
+      }
     }
-    remotes{
-      id 
-      name
-    }
-    cities{
-    id
-          name
-    }
-    description
-}
-}
+  }
 `
 
-const ListNews = ({news}) =>{
-    const [itemclassName, newItemclassName] = useState('active')
-    const {loading: loadingData, error: errorData, data: successData} = useQuery(data);
-    console.log(errorData)
-    if(loadingData){
-        return 'loading'
+const ListNews = () =>{
+
+    const [typeShip, newTypeShip] = useState('Cargo');
+
+    let countLoop = 0;
+    const {loading: loadingNews, error: errorNews, data: successNews} = useQuery(news);
+
+    const toggleType = e =>{
+        newTypeShip(e.target.id);
     }
-    console.log(successData);
+    const toggleActive = id => {
+        if (id===typeShip){
+            return 'active';
+    }
+        return 'inactive';
+    }
+
+    if(loadingNews){
+        return (<Loader/>)
+}
+    if(errorNews){
+        return 'ERROR!';
+    }
     return(
-        <div className='jumbotron col-12 section news'>
+        <div className='jumbotron section news'>
             <div className='list'>
-                <h1>Recent News</h1>
-                    <div className="topnav">
-                        <a className="active" href="#home">Home</a>
-                        <a href="#news">News</a>
-                        <a href="#contact">Contact</a>
+                <h1>Recent Ships</h1>
+                    <div className="nav">
+                    <a id='Cargo' className={'title ' + toggleActive('Cargo')} onClick={toggleType} href="#3">Cargo</a>
+                        <a id='Barge' className={'title '+ toggleActive('Barge')} onClick={toggleType} href="#1">Barge</a>
+                        <a id='Tug' className={'title '+ toggleActive('Tug')} onClick={toggleType} href="#2">Tug</a>
                         <a className='empty'>&nbsp;</a>
                     </div>
-                    <div className='news'>
-                        {news.map(item=>{
-                            return(
-                                <Link to={'/'+item.index} className='link'>
-                                    <div className='news-item' key={item.index}>
-                                        <div>
-                                            <img src={item.url} alt='flow'/>
-                                            <div>{item.name}</div>
-                                            <div>{item.date.toString().slice(0, -30)}</div>
+                    <div className='container-links'>
+                        {console.log(successNews)}
+                        {successNews.launchesPast.map(i=>{
+                            if(i.ships.hasOwnProperty(0)){
+                                console.log(i.ships)
+                            return i.ships.map(item=>{
+                            if (item&&item.type===typeShip&&countLoop<4){
+                                countLoop++;
+                                return(
+                                    <Link to={'/'+item.id} className='link' key={item.id}>
+                                        <div className='item'>
+                                            <div>
+                                                <img src={item.image} alt='flow'/>
+                                                <div className='title'>{item.name}</div>
+                                                <div className='sub'>{item.home_port}</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Link>
-                            )
-                        })}
+                                    </Link>
+                                )
+                            }
+                            })
+                        }
+                        })
+                        }
                     </div>
                 </div>
             <Link to='/all-news'>
-                <div className='all'>GO TO ALL NEWS</div>
+                <div className='title all'>GO TO ALL NEWS</div>
             </Link>
         </div>
     )

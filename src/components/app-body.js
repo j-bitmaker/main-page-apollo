@@ -8,8 +8,8 @@ import './index.scss'
 const AppBody = ({img, news, jobs}) => (
         <>
             <Slider img={img}/> 
-            <News news={news}/>
-            <Hiring jobs={jobs}/>
+            <News/>
+            <Hiring/>
         </>
   );
 export default AppBody;

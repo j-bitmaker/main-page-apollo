@@ -9,7 +9,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 const App = () =>{
     const client = new ApolloClient({
-        uri: 'https://api.graphql.jobs/'
+        uri: 'https://api.spacex.land/graphql/'
     })
     return(
     <ApolloProvider client={client}>

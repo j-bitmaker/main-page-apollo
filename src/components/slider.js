@@ -2,7 +2,7 @@ import React from "react";
 import "./index.scss";
 
   const Slider = ({img}) =>(
-      <div className="">
+      <div className="slider">
         <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
           <ol className="carousel-indicators">
             {img.map((name, i)=>{

@@ -1,66 +1,73 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {useQuery} from "@apollo/react-hooks";
 import {gql} from 'apollo-boost';
+import Loader from './loader';
 import './index.scss'
 
-const  vacations= gql`{
-    jobs{
-    id
-    title
-    slug
-    commitment{
-          id
-    title
-    }
-    remotes{
-      id 
+const vacations= gql`{
+    missions(limit: 20) {
+      description
+      id
+      manufacturers
       name
     }
-    cities{
-    id
-          name
-    }
-    description
-}
-}`
+  }
+  `
 
 const SectionHiring = () =>{
+
+    const [type, newType] = useState('SSL');
+
+    const toggleType = e =>{
+        newType(e.target.id);
+    }
+    const toggleActive = id => {
+        if (id===type){
+            return 'active';
+        }
+        return 'inactive';
+    }
     const {loading: hiringLoading, error: hiringError, data: hiringData} = useQuery(vacations);
+    
     if(hiringLoading){
-        return 'now I am loading, bro'
+        return (<Loader/>   );
     }
-    if(hiringError!=undefined){
-        return hiringError.toString();
+
+    if(hiringError){
+        return 'ERROR!'
     }
-    console.log(hiringData)
     return(
         <div className='jumbotron section hiring'>
             <div className='list'>
-                <h1>We are hiring</h1>
-                <div className='news-list'>
-                <div className="topnav">
-                        <a className="active" href="#home">Home</a>
-                        <a href="#news">News</a>
-                        <a href="#contact">Contact</a>
-                        <a className='empty'>&nbsp;</a>
+                <div>
+                    <h1>We are hiring</h1>
+                    <div className='news-list'>
+                    <div className="nav">
+                            <a id='SSL' className={'title '+toggleActive('SSL')} href="#1" onClick={toggleType}>SSL</a>
+                            <a id='SpaceX' className={'title '+toggleActive('SpaceX')} href="#2" onClick={toggleType}>SpaceX</a>
+                            <a id='Orbital ATK' className={'title '+ toggleActive('Orbital ATK')} href="#3"  onClick={toggleType}>Orbital ATK</a>
+                            <a className='empty'>&nbsp;</a>
+                    </div>
+                    <div className='container-links'>
+                        {hiringData.missions.filter(add=>add.manufacturers[0]===type).map(add=>{
+                                    return(
+                                        <a href={'/'+add.index} className='link' key={add.id}>
+                                            <div className='item'>
+                                                <div>
+                                                    <div className='title'>{add.name}</div>
+                                                    <div>{add.description}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    )
+                                })}
+                    </div>
+                    </div>
+                        <Link to='/all-positons'>
+                            <div className='title all'>GO TO ALL POSITIONS</div>
+                        </Link>
                 </div>
-                {hiringData.jobs.map(add=>{
-                            return(
-                                <Link to={'/'+add.index} className='link'>
-                                    <div className='news-item' key={add.index}>
-                                        <div>
-                                            <div>{add.title}</div>
-                                            <div>{add.description.slice(0, add.description.indexOf('.')+1)}</div>
-                                        </div>
-                                    </div>
-                                </Link>
-                            )
-                        })}
-                </div>
-                    <Link to='/all-positons'>
-                        <div className='all'>Go TO ALL POSITIONS</div>
-                    </Link>
             </div>
         </div>
 

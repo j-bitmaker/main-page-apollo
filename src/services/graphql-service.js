@@ -87,27 +87,27 @@ export const img = [
     {
       index: 0,
       url:
-        "https://images.unsplash.com/photo-1457666134378-6b77915bd5f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1791&q=80"
+        "https://i.imgur.com/28dCx6G.jpg"
     },
     {
       index: 1,
       url:
-        "https://images.unsplash.com/photo-1464306208223-e0b4495a5553?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+        "https://www.wallpaperup.com/uploads/wallpapers/2014/03/31/317502/926ba89c5ce58075a833192974efe15c-700.jpg"
     },
     {
       index: 2,
       url:
-        "https://images.unsplash.com/photo-1455731657401-43502b7c1ab9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+        "https://wallpaperbro.com/img/1007096.jpg"
     },
     {
       index: 3,
       url:
-        "https://images.unsplash.com/photo-1549364742-b940344dbfe6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+        "https://i.pinimg.com/originals/d0/99/fb/d099fbe1334992232264f479a516983e.jpg"
     },
     {
       index: 4,
       url:
-        "https://images.unsplash.com/photo-1460819739742-50e4486578f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80"
+        "https://wallpaperaccess.com/full/7310.jpg"
     }
   ];
     

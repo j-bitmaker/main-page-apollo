@@ -4,62 +4,21 @@ $inactive: #a4a5a6;
 $active-bottom: 2px solid $active;
 $inactive-bottom: 2px solid $inactive;
 $max: 70em;
-
-.section{
-        >div{
-            max-width: $max;
-        }
-        .list{
-            margin: auto;
-        }
-        .news{
-            display: flex;
-            flex-wrap: wrap;
-            .link{
-                display: flex;
-                flex-basis: 12em;
-                flex-grow: 3;
-                    >div{
-                        margin: 10px;
-                        img{
-                        max-width: 100%;
-                        border-radius: 8px;
-                        };
-                    };
-            };
-        }   
-        .news-item:hover{
-            border-radius: 8px;
-            box-shadow: 1px 1px 1px 1px grey;
-        }  
-}
-footer, .news{
-    background-color: transparent!important;
-    }
-.all{
-    margin: auto;
-    text-align: center;
+$links: #808080;
+$title-links: #4b4a4a;
+$all-link: #4b4a4a;
+.capture{
     color: $active;
-}
-.all:hover{
-    color: aqua;
+    font-weight: bold;
 }
 
-
-.news-list>span:hover{
-    color: blue;
-}
-
-.carousel-item img{
-    max-height: 30em;
-}
 header {
     height: 3em;
     position: sticky;
     top: 0;
     border: 1px solid grey;
     z-index: 1020;
-    box-shadow: 10px 10px 10px grey;
+    box-shadow: 20px 20px 20px grey;
     nav{
         background-color: '#e3f2fd';
         img{
@@ -76,7 +35,56 @@ header {
     }
 }
 
-.topnav {
+.section{
+    .list{
+        max-width: $max;
+        margin: auto;
+    }
+    .jumbotron{
+        margin-bottom: 1px;
+    }
+    .container-links{
+        flex-wrap: wrap;
+        display: flex;
+        flex-wrap: wrap;
+        .link{
+            display: flex;
+            flex-basis: 12em;
+            flex-grow: 3;
+                >div{
+                    margin: 10px;
+                    >div{
+                        margin: 8px;
+                    }
+                    img{
+                    max-width: 100%;
+                    border-radius: 8px;
+                    };
+                
+                };
+        };
+    }  
+        .item:hover{
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 1px 1px 1px 1px grey;
+        }  
+    .all{
+        margin: auto;
+        text-align: center;
+        color: $active;
+        font-size: 20px;
+        margin-top: 4em;
+    }
+    .all:hover{
+        color: #2f90f7;
+    }
+}   
+.news{
+    background-color:white;
+}
+
+.nav {
     display: flex;
     overflow: hidden;
     a {
@@ -104,18 +112,18 @@ header {
 
 
 footer{
+    .container{
+        max-width: $max;
+    }
     .logos{
-        display: flex;
-        justify-content: space-between;
         .my-logo img{
             width: 7em;
         }
         .soc-logos{
             display: flex;
             justify-content: end;
-            img{
-                width: 2em;
-                margin: 2px;
+            i{
+                font-size: 30px;
             }
         
         }
@@ -123,27 +131,29 @@ footer{
     .links{
         display: flex;
         flex-flow: row wrap;
+        .third-column{
+            margin-top: 20px;
+        }
         div{
             display: flex;
-            flex-flow: column wrap;
+            flex-direction: column;
         };
-        .first-column{
-            flex-basis: 30em;
-        };
-        .second-column{
-            flex-basis: 20em
-        }
     }
-    span{
-        color: #808080
+    i{
+        color: $title-links;
+    }
+    a{
+        color: $links;
     };
-    img{
-        display: flex;
-        flex-basis: 10px;
-    }
+}
+
+a{
+    color: grey;
 }
 a:hover{
     text-decoration: none;
+    color: grey;
 }
-
-
+.title{
+    @extend .capture
+}
