@@ -4,7 +4,6 @@ import {ApolloProvider} from '@apollo/react-hooks';
 import AppHeader from './app-header';
 import AppBody from './app-body.js';
 import AppFooter from './app-footer';
-import {img, news, jobs} from '../services/graphql-service.js';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 const App = () =>{
@@ -16,7 +15,7 @@ const App = () =>{
         <Router>
             <div className='app'>
                 <AppHeader/>
-                <AppBody img={img} news={news} jobs={jobs}/>
+                <AppBody/>
                 <AppFooter/>
             </div>
         </Router>

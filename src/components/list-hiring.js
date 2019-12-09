@@ -31,7 +31,7 @@ const SectionHiring = () =>{
     const {loading: hiringLoading, error: hiringError, data: hiringData} = useQuery(vacations);
     
     if(hiringLoading){
-        return (<Loader/>   );
+        return (<Loader/>);
     }
 
     if(hiringError){

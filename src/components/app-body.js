@@ -7,7 +7,7 @@ import './index.scss'
 
 const AppBody = ({img, news, jobs}) => (
         <>
-            <Slider img={img}/> 
+            <Slider/> 
             <News/>
             <Hiring/>
         </>
